@@ -42,7 +42,9 @@ class App extends Component {
             <Route exact path="/">
               <CardList meals={filteredMeals} />
             </Route>
-            {/* <RecipeCardList /> */}
+            <Route path="/:id" component={RecipeCardList}>
+              <RecipeCardList /> 
+            </Route>
           </Router>
       </div>
     );

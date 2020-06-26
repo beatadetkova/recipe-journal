@@ -3,10 +3,9 @@ import { useHistory } from "react-router-dom";
 
 const Card = ({ name, foodImage }) => {
   const history = useHistory();
-  console.log(history);
   const routeChange = () =>{ 
     let path = name;
-    history.replace(path);
+    history.push(path);
   }
   // function clickHandler() {
   //   alert('Hello!');
