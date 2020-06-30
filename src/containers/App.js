@@ -16,9 +16,9 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:3000/folders')
+    fetch('http://localhost:3000/meals')
     .then(response=> response.json())
-    .then(data => {this.setState({ meals: data.folders})});
+    .then(data => {this.setState({ meals: data.meals})});
   }
 
   onSearchChange = (event) => {
