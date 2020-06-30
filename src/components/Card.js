@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 
 const Card = ({ name, foodImage }) => {
   const history = useHistory();
-  const routeChange = () =>{ 
+  const routeChange = () => { 
     let path = name;
     history.push(path);
   }

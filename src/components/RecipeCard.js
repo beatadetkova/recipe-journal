@@ -5,8 +5,20 @@ class RecipeCard extends Component {
     super(props)
     this.clickHandler = this.clickHandler.bind(this)
     this.state = {
-      isExpanded: false
-    }
+      isExpanded: false,
+      recipeInput: ''
+    };
+    this.handleInputChange = this.handleInputChange.bind(this);
+  }
+
+  handleInputChange(event) {
+    const target = event.target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const name = target.name;
+
+    this.setState({
+      [name]: value
+    });
   }
 
   clickHandler () {
@@ -15,14 +27,14 @@ class RecipeCard extends Component {
   render () {
     const detail = this.state.isExpanded ?
     <div>
-      <h2>{this.props.recipeName}</h2>
       <h2>expanded!</h2>
     </div>
     :
-    <h2>{this.props.recipeName}</h2>
+    <div></div>
     return (
       <div className ='tc bg-light-green dib br3 pa3 ma2 grow ba bw2 b--black shadow-5 pointer' onClick={this.clickHandler}>
         <div className="flex flex-column items-center justify-around" style={{width: '200px'}}>
+          <h2>{this.props.recipeName}</h2>
           {detail}
         </div>
       </div>
