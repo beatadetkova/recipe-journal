@@ -3,7 +3,6 @@ import SearchBox from '../components/SearchBox';
 import Scroll from '../components/Scroll';
 import CardList from '../components/CardList';
 import RecipeCardList from '../components/RecipeCardList'
-import { RecipeFoldersNames } from '../components/RecipeFoldersNames';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import './App.css';
 
@@ -11,16 +10,16 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      meals: RecipeFoldersNames,
+      meals: [],
       searchfield: ''
     }
   }
 
-  // componentDidMount() {
-  //   fetch('/components/RecipeFoldersNames.js')
-  //     .then(response=> response.json())
-  //     .then(names => {this.setState({ recipes: names})});
-  // }
+  componentDidMount() {
+    fetch('http://localhost:3000/folders')
+    .then(response=> response.json())
+    .then(data => {this.setState({ meals: data.folders})});
+  }
 
   onSearchChange = (event) => {
     this.setState({ searchfield: event.target.value })
