@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import RecipeCard from './RecipeCard';
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
+import { withRouter } from "react-router";
 
 
 class RecipeCardList extends Component {
@@ -13,10 +14,10 @@ class RecipeCardList extends Component {
   }
 
   componentDidMount() {
-    const { id } = useParams();
-    fetch(`http://localhost:3000/meals/${id}`)
-    .then(response=> response.json())
-    .then(data => {this.setState({ recipes: data.recipes})});
+    const id = this.props.match.params.id;
+    fetch(`http://localhost:5000/meals/${id}`)
+    .then(response => response.json())
+    .then(data => {this.setState({ recipes: data})});
   }
 
 
@@ -46,4 +47,4 @@ class RecipeCardList extends Component {
 
 
 
-export default RecipeCardList;
+export default withRouter(RecipeCardList);
