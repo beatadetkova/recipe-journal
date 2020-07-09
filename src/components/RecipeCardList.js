@@ -7,7 +7,7 @@ import { withRouter } from "react-router";
 class RecipeCardList extends Component {
   constructor(props) {
     super(props)
-    this.myFunction = this.myFunction.bind(this)
+    this.addRecipe = this.addRecipe.bind(this)
     this.state = {
       recipes: [ ]
     };
@@ -15,20 +15,33 @@ class RecipeCardList extends Component {
 
   componentDidMount() {
     const id = this.props.match.params.id;
-    fetch(`http://localhost:5000/meals/${id}`)
+    fetch(`http://localhost:5000/meals/${id}/recipes`)
     .then(response => response.json())
     .then(data => {this.setState({ recipes: data})});
   }
 
 
-  myFunction() {
-    console.log('hello')
+  addRecipe() {
+    const name = window.prompt('recipe name');
+    const id = this.props.match.params.id;
+    const init = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        recipeName: name
+      })
+    }
+    fetch(`http://localhost:5000/meals/${id}/recipes/add`, init)
+    .then(response => response.json())
+    .then(data => {this.setState({ recipes: data})});
   }
 
   render() {
     return (
       <div className="flex flex-wrap items-center justify-center">
-      <button type="button" onClick={this.myFunction}>Add recipe</button>
+      <button type="button" onClick={this.addRecipe}>Add recipe</button>
       {
         this.state.recipes.map((recipe, i )=> {
           return (
