@@ -10,39 +10,33 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      meals: [],
       searchfield: ''
     }
   }
 
-  componentDidMount() {
-    fetch('http://localhost:5000/meals')
-    .then(response=> response.json())
-    .then(data => {this.setState({ meals: data})});
-  }
+  // componentDidMount() {
+  //   fetch('http://localhost:5000/meals')
+  //   .then(response=> response.json())
+  //   .then(data => {this.setState({ meals: data})});
+  // }
 
   onSearchChange = (event) => {
     this.setState({ searchfield: event.target.value })
   }
 
   render() {
-    const { meals, searchfield } = this.state;
-    const filteredMeals = meals.filter(meal =>{
-      return meal.name.toLowerCase().startsWith(searchfield.toLowerCase());
-    })
-    return !meals.length ?
-    <h1>Loading</h1> :
-    (
+    // const { searchfield } = this.state;
+    return (
       <div className='tc'>
         <h1 className='f1'>Cooking Plan - your new cooking pal!</h1>
           <Router>
             <SearchBox searchChange={this.onSearchChange}/>
             <Scroll />
             <Route exact path="/">
-              <CardList meals={filteredMeals} />
+              <CardList searchfield={this.state.searchfield} />
             </Route>
             <Route path="/:id" component={RecipeCardList}>
-              <RecipeCardList /> 
+              <RecipeCardList searchfield={this.state.searchfield} /> 
             </Route>
           </Router>
       </div>
