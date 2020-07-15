@@ -21,6 +21,12 @@ class RecipeCard extends Component {
     });
   }
 
+  componentDidUpdate () {
+    if (!this.props.isExpanded && this.state.isExpanded) {
+      this.setState({ isExpanded: false })
+    }
+  }
+
   clickHandler () {
     this.setState({ isExpanded: !this.state.isExpanded })
     this.props.updateIndex(this.props.index)
