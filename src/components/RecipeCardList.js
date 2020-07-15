@@ -6,11 +6,17 @@ import { withRouter } from "react-router";
 class RecipeCardList extends Component {
   constructor(props) {
     super(props)
+    this.updateIndex = this.updateIndex.bind(this)
     this.addRecipe = this.addRecipe.bind(this)
     this.state = {
+      index: -1,
       recipes: [ ],
       isFetching: true
     };
+  }
+
+  updateIndex (index) {
+    this.setState({ index })
   }
 
   componentDidMount() {
@@ -53,9 +59,12 @@ class RecipeCardList extends Component {
         {filteredRecipes.map((recipe, i )=> {
           return (
             <RecipeCard
-              key ={i}
+              key={i}
+              index={i}
               id={recipe.id}
               recipeName={recipe.recipeName}
+              isExpanded={this.state.index === i}
+              updateIndex={this.updateIndex}
               />
             );
           })

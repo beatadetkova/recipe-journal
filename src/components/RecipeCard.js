@@ -23,9 +23,11 @@ class RecipeCard extends Component {
 
   clickHandler () {
     this.setState({ isExpanded: !this.state.isExpanded })
+    this.props.updateIndex(this.props.index)
   }
+
   render () {
-    const detail = this.state.isExpanded ?
+    const detail = this.props.isExpanded && this.state.isExpanded ?
     <div>
       <h2>expanded!</h2>
     </div>
