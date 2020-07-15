@@ -5,7 +5,7 @@ class RecipeCard extends Component {
     super(props)
     this.clickHandler = this.clickHandler.bind(this)
     this.state = {
-      isExpanded: false,
+      isExpanded: this.props.isExpanded,
       recipeInput: ''
     };
     this.handleInputChange = this.handleInputChange.bind(this);
