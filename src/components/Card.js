@@ -7,9 +7,7 @@ const Card = ({ name, foodImage }) => {
     let path = name;
     history.push(path);
   }
-  // function clickHandler() {
-  //   alert('Hello!');
-  // }
+
   return (
       <div className ='tc bg-light-green dib br3 pa3 ma2 grow ba bw2 b--black shadow-5 pointer' onClick={routeChange}>
         <img alt='picture' src={foodImage} />

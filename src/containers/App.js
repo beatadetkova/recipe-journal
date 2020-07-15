@@ -14,18 +14,11 @@ class App extends Component {
     }
   }
 
-  // componentDidMount() {
-  //   fetch('http://localhost:5000/meals')
-  //   .then(response=> response.json())
-  //   .then(data => {this.setState({ meals: data})});
-  // }
-
   onSearchChange = (event) => {
     this.setState({ searchfield: event.target.value })
   }
 
   render() {
-    // const { searchfield } = this.state;
     return (
       <div className='tc'>
         <h1 className='f1'>Cooking Plan - your new cooking pal!</h1>
