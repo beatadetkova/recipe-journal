@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import RecipeCard from './RecipeCard';
 import { withRouter } from "react-router";
+import button from './button.png'
+import './RecipeCardList.css'
 
 
 class RecipeCardList extends Component {
@@ -40,8 +42,14 @@ class RecipeCardList extends Component {
       })
     }
     fetch(`http://localhost:5000/meals/${id}/recipes/add`, init)
-    .then(response => response.json())
-    .then(data => {this.setState({ recipes: data })});
+    .then(async response => {
+      const data = await response.json()
+      if (response.status === 200) {
+        this.setState({ recipes: data })
+      } else {
+        console.log(`There was an error processing your request: ${data.message}`)
+      }
+    })
   }
 
   render() {
@@ -50,7 +58,7 @@ class RecipeCardList extends Component {
     })
     return (
       <div className="flex flex-wrap items-center justify-center">
-      <button type="button" onClick={this.addRecipe}>Add recipe</button>
+      {/* <button type="button" onClick={this.addRecipe}>Add recipe</button> */}
       {
       this.state.isFetching ? (
         <div>Loading...</div>
@@ -69,6 +77,9 @@ class RecipeCardList extends Component {
             );
           })
         }
+        <div className= 'tc grow pointer add-button' type="button" onClick={this.addRecipe}>
+          <img alt='picture' src={button}/>
+        </div>
       </div>)
       }
     </div>
