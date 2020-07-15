@@ -58,7 +58,6 @@ class RecipeCardList extends Component {
     })
     return (
       <div className="flex flex-wrap items-center justify-center">
-      {/* <button type="button" onClick={this.addRecipe}>Add recipe</button> */}
       {
       this.state.isFetching ? (
         <div>Loading...</div>
