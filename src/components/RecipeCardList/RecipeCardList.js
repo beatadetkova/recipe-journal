@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import RecipeCard from './RecipeCard';
+import RecipeCard from '../RecipeCard/RecipeCard';
 import { withRouter } from "react-router";
 import button from './button.png'
 import './RecipeCardList.css'

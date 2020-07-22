@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import SearchBox from '../components/SearchBox';
-import Scroll from '../components/Scroll';
-import CardList from '../components/CardList';
-import RecipeCardList from '../components/RecipeCardList'
+import SearchBox from '../components/SearchBox/SearchBox';
+import Scroll from '../components/Scroll/Scroll';
+import CardList from '../components/CardList/CardList';
+import RecipeCardList from '../components/RecipeCardList/RecipeCardList'
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import './App.css';
 
