@@ -22,8 +22,8 @@ class RecipeCardList extends Component {
   }
 
   componentDidMount() {
-    const id = this.props.match.params.id;
-    fetch(`http://localhost:5000/meals/${id}/recipes`)
+    const mealName = this.props.match.params.mealName;
+    fetch(`http://localhost:5000/meals/${mealName}/recipes`)
     .then(response => response.json())
     .then(data => {this.setState({ recipes: data, isFetching: false})});
   }

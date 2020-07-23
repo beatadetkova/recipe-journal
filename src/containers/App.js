@@ -28,7 +28,7 @@ class App extends Component {
             <Route exact path="/">
               <CardList searchfield={this.state.searchfield} />
             </Route>
-            <Route path="/:id" component={RecipeCardList}>
+            <Route path="/:mealName" component={RecipeCardList}>
               <RecipeCardList searchfield={this.state.searchfield} /> 
             </Route>
           </Router>
