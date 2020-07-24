@@ -31,7 +31,7 @@ class RecipeCardList extends Component {
 
   addRecipe() {
     const name = window.prompt('recipe name');
-    const id = this.props.match.params.id;
+    const mealName = this.props.match.params.mealName;
     const init = {
       method: 'POST',
       headers: {
@@ -41,7 +41,7 @@ class RecipeCardList extends Component {
         recipeName: name
       })
     }
-    fetch(`http://localhost:5000/meals/${id}/recipes/add`, init)
+    fetch(`http://localhost:5000/meals/${mealName}/recipes/add`, init)
     .then(async response => {
       const data = await response.json()
       if (response.status === 200) {
