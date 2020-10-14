@@ -35,6 +35,9 @@ class RecipeCardList extends Component {
 
   addRecipe(event) {
     const name = window.prompt('recipe name');
+    if (!name) {
+      return;
+    }
     const mealName = this.props.match.params.mealName;
     const init = {
       method: 'POST',
